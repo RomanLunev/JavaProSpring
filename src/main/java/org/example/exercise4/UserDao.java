@@ -19,7 +19,7 @@ public class UserDao {
 
     public UserDao(DataSource ds) {
         try {
-            this.connection = DataSource.getConnection();
+            this.connection = ds.getConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

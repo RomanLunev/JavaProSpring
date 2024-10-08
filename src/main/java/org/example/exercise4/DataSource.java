@@ -9,21 +9,13 @@ import java.sql.SQLException;
 
 @Component
 public class DataSource {
+    private final HikariDataSource ds;
 
-    private static HikariConfig config = new HikariConfig();
-    private static HikariDataSource ds;
-
-    static {
-        config.setJdbcUrl("jdbc:postgresql://localhost:5432/javaPro");
-        config.setUsername("pg");
-        config.setPassword("123");
-        config.setMaximumPoolSize(5);
+    private DataSource(HikariConfig config) {
         ds = new HikariDataSource( config );
     }
 
-    private DataSource() {}
-
-    public static Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         return ds.getConnection();
     }
 }
