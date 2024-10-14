@@ -1,4 +1,4 @@
-package org.example.exercise4;
+package com.example.javaspringpro.model;
 
 public class User {
     private Long id;
