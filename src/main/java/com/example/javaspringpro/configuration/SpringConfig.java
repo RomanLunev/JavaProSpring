@@ -1,18 +1,21 @@
-package org.example.exercise4;
+package com.example.javaspringpro.configuration;
 
 import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
 
-    @Bean public HikariConfig hikariConfig() {
+    @Bean public DataSource datasource() {
         HikariConfig config = new  HikariConfig();
         config.setJdbcUrl("jdbc:postgresql://localhost:5432/javaPro");
         config.setUsername("pg");
         config.setPassword("123");
         config.setMaximumPoolSize(5);
-        return config;
+        return new HikariDataSource( config );
     }
 }

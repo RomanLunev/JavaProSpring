@@ -1,5 +1,7 @@
-package org.example.exercise4;
+package com.example.javaspringpro.service;
 
+import com.example.javaspringpro.model.User;
+import com.example.javaspringpro.repository.UserDao;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,5 +27,9 @@ public class UserService {
 
     public List<User> findAll() {
         return userDao.findAll();
+    }
+
+    public void deleteAll() {
+        userDao.deleteAll();
     }
 }

@@ -1,9 +1,11 @@
-package org.example.exercise4;
+package com.example.javaspringpro.repository;
 
 
+import com.example.javaspringpro.model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -84,6 +86,15 @@ public class UserDao {
                 user = new User(resultSet.getLong(1), resultSet.getString(2));
             }
             return user;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteAll() {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from users;");
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
