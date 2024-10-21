@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: payments-core
+
+server:
+  port: 8081
+
+integration:
+  service:
+    products:
+      uri: "http://localhost:8080/rest"
+      connect-timeout: 5s
+      read-timeout: 5s
